@@ -178,8 +178,12 @@ function control(e) {
             break;
     }
 
-
+    for (let i = 0; i < size; i++)
+    for (let j = 0; j < size; j++)
+        document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
 
 }
+
+let colors = {0: "#cdc1b4", 2: "#eee4da", 4: "#eee1c9", 8: "#f3b27a", 16: "#f69664", 32: "#f77c5f", 64: "#f75f3b", 128: "#edd073", 256: "#edcc61", 512: "#edc651", 1024: "#eec744", 2048: "#ecc230"}
 
 document.addEventListener('keyup', control);
