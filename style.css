@@ -15,6 +15,7 @@
     height: 100px;
     font-size: 60px;
     text-align: center;
-    background-color: #ead4b0;
+    background-color: #cdc1b4;
     border: 2px solid #3f2a08;
+    transition-delay: 0.01s;
 }
