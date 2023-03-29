@@ -183,7 +183,36 @@ function control(e) {
         document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
 
 }
+document.addEventListener('keyup', control);
+
+// mobile swipe events
+let touchstartX = 0
+let touchendX = 0
+let touchstartY = 0
+let touchendY = 0
+
+function checkDirection() {
+    if (Math.abs(touchstartX-touchendX) < Math.abs(touchstartY-touchendY)){
+        if (touchendY < touchstartY) moveUp();
+        else moveDown();
+    } else {
+        if (touchendX < touchstartX) moveLeft();
+        else moveRight();
+    }
+    for (let i = 0; i < size; i++)
+    for (let j = 0; j < size; j++)
+        document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
+}
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX
+    touchstartY = e.changedTouches[0].screenY
+})
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    touchendY = e.changedTouches[0].screenY
+    checkDirection()
+})
 
 let colors = {0: "#cdc1b4", 2: "#eee4da", 4: "#eee1c9", 8: "#f3b27a", 16: "#f69664", 32: "#f77c5f", 64: "#f75f3b", 128: "#edd073", 256: "#edcc61", 512: "#edc651", 1024: "#eec744", 2048: "#ecc230"}
-
-document.addEventListener('keyup', control);
