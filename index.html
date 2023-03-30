@@ -8,7 +8,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="controls">
+        <h1>2048</h1>
+        <button onClick="window.location.reload();"><img src="https://img.icons8.com/ios-filled/50/null/recurring-appointment.png"/></button>
+        <div class="counter">
+            <h2>score:</h2>
+            <h2 id="count">0</h2>
+        </div>
+    </div>
     <div class="game">
+        <div class="overlay">
+            Game over
+        </div>
         <div class="row row1">
             <div class="box box1 box11"></div>
             <div class="box box2 box12"></div>
@@ -34,6 +45,8 @@
             <div class="box box4 box44"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
