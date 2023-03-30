@@ -26,6 +26,17 @@ function isFull() {
     return (c==size*size) ? true : false;
 }
 
+function isPlayable() {
+    if (!isFull()) return true;
+    for (let i = 0; i < size-1; i++) {
+        for (let j = 0; j < size-1; j++) {
+            if (game[i][j].innerHTML == game[i+1][j].innerHTML || game[i][j].innerHTML == game[i][j+1].innerHTML)
+                return true
+        }
+    }
+    return false
+}
+
 function generate() {
     if (isFull()) return false;
     let num = (Math.floor(Math.random()*2) == 0) ? 2 : 4;
@@ -162,6 +173,29 @@ function writeGrid(grid) {
     }
 }
 
+function colorGrid() {
+    for (let i = 0; i < size; i++)
+    for (let j = 0; j < size; j++)
+        document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
+    score()
+}
+
+function endGame() {
+    let done = document.querySelector(".overlay")
+    if (!isPlayable()) {
+        done.style.transform = "translate(0)";
+    } else done.style.transform = "translate(-1000%)";
+}
+
+function score() {
+    let count = 0
+    let grid = getGrid()
+    for (let i = 0; i < size; i++)
+    for (let j = 0; j < size; j++)
+        count += grid[i][j]
+    document.getElementById("count").innerHTML = count
+}
+
 function control(e) {
     switch (e.keyCode) {
         case 37:
@@ -177,11 +211,8 @@ function control(e) {
             moveDown();
             break;
     }
-
-    for (let i = 0; i < size; i++)
-    for (let j = 0; j < size; j++)
-        document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
-
+    colorGrid();
+    endGame();
 }
 document.addEventListener('keyup', control);
 
@@ -199,9 +230,8 @@ function checkDirection() {
         if (touchendX < touchstartX) moveLeft();
         else moveRight();
     }
-    for (let i = 0; i < size; i++)
-    for (let j = 0; j < size; j++)
-        document.querySelector(`.box${i+1}${j+1}`).style.backgroundColor = colors[getGrid()[i][j]];
+    colorGrid();
+    endGame();
 }
 
 document.addEventListener('touchstart', e => {
