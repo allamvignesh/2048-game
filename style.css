@@ -29,22 +29,26 @@ button:hover {
 }
 
 .game {
+    position: relative;
+
     width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    font-size: 60px;
+    aspect-ratio: 1 / 1;
+    margin: auto;
+    font-size: 32px;
 }
 
 .overlay {
     position: absolute;
-    width: 400px;
-    height: 255px;
+    width: 100%;
+    aspect-ratio: 1/ 1;
     border-radius: 2.5%;
-    background: gray;
-    opacity: 0.6;
-    padding-top: 40%;
-
+    background: rgba(128, 128, 128, 0.75);
     transform: translate(-1000%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
 }
 
 .row {
@@ -53,7 +57,7 @@ button:hover {
 
 .box {
     width: 100px;
-    height: 100px;
+    aspect-ratio: 1 / 1;
     background-color: #cdc1b4;
     border: 2.5px solid #6e6963;
     transition-delay: 0.01s;
