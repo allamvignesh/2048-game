@@ -56,11 +56,14 @@ button:hover {
 }
 
 .box {
-    width: 100px;
+    width: 4em;
     aspect-ratio: 1 / 1;
     background-color: #cdc1b4;
     border: 2.5px solid #6e6963;
     transition-delay: 0.01s;
+    line-height: 2.75em;
+    font-family: "Courier";
+    font-weight: 1000;
 }
 
 .box11 {
